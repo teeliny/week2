@@ -43,9 +43,9 @@ fetch(api)
     let persons = data.results;
     persons.map((person, index) => {
         let info = new User(person);
-        let value = info.userInfo
+        let value = info.userInfo;
 
-        let imageUrl = `https://picsum.photos/300/300?=${index}`;
+        let imageUrl = `https://picsum.photos/250/250?=${index}`;
         let actorArticle = newItem('article');
         let image = newItem('img');
         let name = newItem('p');
@@ -62,11 +62,12 @@ fetch(api)
         //
         name.addEventListener("click",  (e) => {
             displayModal.style.display = "block";
-            displayModal.innerHTML += `
+            displayModal.innerHTML = `
             <div class="modal-content">
-                <p>${value.name}</p>
-                <p>${value.height}</p>
-                <p>${value.gender}</p>
+                <img class="profile_image" src="${imageUrl}" alt=""/>
+                <p class="name">${value.name}</p>
+                <p class="height">${value.height}</p>
+                <p class="gender">${value.gender}</p>
                 <button class="closeModal">CLOSE</button>
                 </div>
             `
@@ -74,8 +75,7 @@ fetch(api)
         close.onclick = () => {
             displayModal.style.display = 'none'
         }
-        })
-        
+        }) 
     })
 })
 
