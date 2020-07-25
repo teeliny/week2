@@ -60,21 +60,22 @@ fetch(api)
 
 
         //
-        name.addEventListener("click",  () => {
+        name.addEventListener("click",  (e) => {
             displayModal.style.display = "block";
-            displayModal.innerHTML = `
+            displayModal.innerHTML += `
+            <div class="modal-content">
                 <p>${value.name}</p>
                 <p>${value.height}</p>
                 <p>${value.gender}</p>
                 <button class="closeModal">CLOSE</button>
+                </div>
             `
-        })
-
-        window.onclick = function() {
-            if (event.target == displayModal) {
-                displayModal.style.display = "none";
-            }
+            let close = document.querySelector('.closeModal')
+        close.onclick = () => {
+            displayModal.style.display = 'none'
         }
+        })
+        
     })
 })
 
@@ -82,8 +83,18 @@ fetch(api)
     console.log(error);
 });
 
-function closeDialog() {
-    x.close();
-  }
+/* const close = document.querySelector('.closeModal');
+console.log(close);
+window.onclick = function(event) {
+    if (event.target === displayModal || event.target === close) {
+        displayModal.style.display = "none";
+    }
+} 
 
 
+const close = ()=>{
+    console.log('yeeeh')
+    displayModal.style.display = "none";
+    
+}
+ */

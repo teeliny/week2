@@ -10,14 +10,16 @@
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    margin: 10% auto;
+    margin: 0 auto;
     text-align: center;
 }
 
 .closeModal {
     font-size: 12px;
     padding: 10px;
-    position: center;
-    right: 0;
+    width: 100px;
+    height: 50px;
     background-color: red;
+    color: #ffffff;
+    z-index: 1;
 }
