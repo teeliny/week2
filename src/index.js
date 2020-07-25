@@ -63,11 +63,12 @@ fetch(api)
         name.addEventListener("click",  (e) => {
             displayModal.style.display = "block";
             displayModal.innerHTML = `
-            <div class="modal-content">
-                <img class="profile_image" src="${imageUrl}" alt=""/>
-                <p class="name">${value.name}</p>
-                <p class="height">${value.height}</p>
-                <p class="gender">${value.gender}</p>
+            <div class="modal__content">
+                <h2>STAR WARS LEGEND</h2>
+                <img class="profile__image" src="${imageUrl}" alt=""/>
+                <p class="name">Name: <strong>${value.name}</strong></p>
+                <p class="height">Height: <strong>${value.height}</strong></p>
+                <p class="gender">Gender: <strong>${value.gender}</strong></p>
                 <button class="closeModal">CLOSE</button>
                 </div>
             `
@@ -82,19 +83,3 @@ fetch(api)
 .catch((error) => {
     console.log(error);
 });
-
-/* const close = document.querySelector('.closeModal');
-console.log(close);
-window.onclick = function(event) {
-    if (event.target === displayModal || event.target === close) {
-        displayModal.style.display = "none";
-    }
-} 
-
-
-const close = ()=>{
-    console.log('yeeeh')
-    displayModal.style.display = "none";
-    
-}
- */
