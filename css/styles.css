@@ -132,30 +132,10 @@ article:hover {
   font-size: 24px;
 }
 
-.profile__image {
-  width: 30%;
-  border-radius: 20px;
-}
-
-.closeModal {
-    font-size: 12px;
-    font-weight: bolder;
-    font-family: fantasy;
-    padding: 10px;
-    width: 100px;
-    height: 50px;
-    background-color: red;
-    color: #ffffff;
-    z-index: 1;
-    border-radius: 50%;
-    border: none;
-}
-
-
 /* Media Query for the Header Section */
 @media (min-width: 420px) {
   .modal__content {
-    width: 75%;
+    width: 80%;
     font-size: 16px;
   }
 }
@@ -175,4 +155,23 @@ article:hover {
   .modal__content {
     width: 50%;
   }
+}
+
+.profile__image {
+  width: 30%;
+  border-radius: 20px;
+}
+
+.closeModal {
+    font-size: 12px;
+    font-weight: bolder;
+    font-family: fantasy;
+    cursor: pointer;
+    padding: 10px;
+    width: 100px;
+    height: 50px;
+    background-color: red;
+    color: #ffffff;
+    border-radius: 50%;
+    border: none;
 }

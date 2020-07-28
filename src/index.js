@@ -1,6 +1,3 @@
-//import User from './modules/class';
-
-//var user = new User;
 
 // Variables
 const item = document.getElementById("actors");
@@ -9,7 +6,7 @@ let displayModal = document.getElementById('displayModal');
 let pop = document.getElementsByClassName('close');
 
 
-//Creating User class
+//Creating User class with user property
 class User {
     constructor(person) {
       this.person = person;
@@ -30,8 +27,8 @@ class User {
     }
 }
 
-
-// Functions for creating a new Node and append it to the ul
+// Functions for creating a new Node(newItem) and append 
+//it to the article tag in the index.html file using appendItem
 newItem = (element) => document.createElement(element);
 appendItem = (parent, child) => parent.appendChild(child);
 
@@ -40,44 +37,62 @@ fetch(api)
 .then((val) => val.json())
 .then((data) => {
     
+    //Assigning the fetch data to a variable. 
     let persons = data.results;
+
+    //Instantiating a new class and mapping the details of individual character from the data
     persons.map((person, index) => {
         let info = new User(person);
+
+        //Initializing a new variable and extract the required values as stated in the method
         let value = info.userInfo;
 
-        let imageUrl = `https://picsum.photos/250/250?=${index}`;
+        //Assigning image api for dummy(random) images for each characters to a variable
+        let imageAPI = `https://loremflickr.com/250/250?=${index}`;    
+
+        //Creating new article tag along with the random image and the p tag for the name of that character
         let actorArticle = newItem('article');
-        let image = newItem('img');
+        let randomImage = newItem('img');
         let name = newItem('p');
-        // actorArticle.id = index + 1;
+    
+        name.innerHTML = `${person.name}`; //Populating the p tag with the character name
 
-        image.src = imageUrl;
-        name.innerHTML = `${person.name}`;
+        randomImage.src = imageAPI; //Assigning the image API to the source of the random image
+        
 
-        appendItem(item, actorArticle); //Apending article to the div item
-        appendItem(actorArticle, image);
+        //Apending article to the div item as well as random image and character name to the article tag
+        appendItem(item, actorArticle); 
+        appendItem(actorArticle, randomImage);
         appendItem(actorArticle, name);
 
 
-        //
+        //Add an event listening on the name of the character
         name.addEventListener("click",  (e) => {
+            e.preventDefault();
             displayModal.style.display = "block";
+
+            //Creating a div in the displayModal along with the same random 
+            //image and other relevant information of the character
             displayModal.innerHTML = `
             <div class="modal__content">
                 <h2>STAR WARS LEGEND</h2>
-                <img class="profile__image" src="${imageUrl}" alt=""/>
+                <img class="profile__image" src="${imageAPI}" alt=""/>
                 <p class="name">Name: <strong>${value.name}</strong></p>
                 <p class="height">Height: <strong>${value.height}</strong></p>
                 <p class="gender">Gender: <strong>${value.gender}</strong></p>
                 <button class="closeModal">CLOSE</button>
                 </div>
             `
+                    //Creating an onclick function to close the modal.
             let close = document.querySelector('.closeModal')
-        close.onclick = () => {
-            displayModal.style.display = 'none'
-        }
+            close.onclick = () => {
+                displayModal.style.display = 'none'
+            }
         }) 
+
     })
+
+            
 })
 
 .catch((error) => {
