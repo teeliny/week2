@@ -1,5 +1,5 @@
-
-// Variables
+window.addEventListener('DOMContentLoaded', (event) => {
+    // Variables
 const item = document.getElementById("actors");
 const api = "https://swapi.dev/api/people/?results";
 let displayModal = document.getElementById('displayModal');
@@ -41,7 +41,7 @@ fetch(api)
     let persons = data.results;
 
     //Instantiating a new class and mapping the details of individual character from the data
-    persons.map((person, index) => {
+    persons.forEach((person, index) => {
         let info = new User(person);
 
         //Initializing a new variable and extract the required values as stated in the method
@@ -98,3 +98,6 @@ fetch(api)
 .catch((error) => {
     console.log(error);
 });
+    
+});
+
